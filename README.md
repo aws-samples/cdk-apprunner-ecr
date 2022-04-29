@@ -171,7 +171,7 @@ CdkApprunnerEcrStack.url = https://xxxxxx123x.us-west-2.awsapprunner.com
 ```
 The app is a basic sign up page without much functionality. The sign up button is not functional. 
 
-<img src="https://github.com/aws-samples/cdk-apprunner-ecr/blob/main/assets/flutter-signup-basic.png?raw=true"/>
+<img src="https://github.com/aws-samples/cdk-apprunner-ecr/blob/main/assets/sample-signup-app-basic.png?raw=true"/>
 
 ### Updating sample app and redeploy updates
 In the next section, we will update 2 components below and push the updates again with CDK commands.
@@ -186,7 +186,7 @@ Let's start!
 ```
 onPressed: _formProgress == 1 ? _showWelcomeScreen : null
 ```
-<img src="https://github.com/aws-samples/cdk-apprunner-ecr/blob/main/assets/c9-flutter-changes-1.png?raw=true"/>
+<img src="https://github.com/aws-samples/cdk-apprunner-ecr/blob/main/assets/c9-sample-app-changes-1.png?raw=true"/>
 
 It should show something like this after you have updated:
 ```
@@ -210,7 +210,7 @@ TextButton(
 
 We have prepared an `AnimatedProgressIndicator` widget for you. In the same `/cdk-apprunner-ecr/cdk-apprunner-asset/fluttersampleapp/lib/main.dart` file, find and replace the `LinearProgressIndicator` in the Form with this new `AnimatedProgressIndicator`.  (Note: only update the `LinearProgressIndicator` in the build widget within the `_SignUpFormState` class.
 
-<img src="https://github.com/aws-samples/cdk-apprunner-ecr/blob/main/assets/c9-flutter-changes-2.png?raw=true"/>
+<img src="https://github.com/aws-samples/cdk-apprunner-ecr/blob/main/assets/c9-sample-app-changes-2.png?raw=true"/>
 
 It should show something like this after you have updated:
 ```
