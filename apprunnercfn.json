@@ -1,0 +1,200 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "App Runner ECR Workshop - Lab Template to setup the AWS Cloud9 environment for the workshop.\n",
+    "Parameters": {
+        "Cloud9CidrBlock": {
+            "Description": "The CIDR block range for your Cloud9 IDE VPC",
+            "Type": "String",
+            "Default": "10.43.0.0/28"
+        },
+        "GitRepositoryURL": {
+            "Description": "The Git repository URL for the project we are cloning",
+            "Type": "String",
+            "Default": "https://github.com/aws-samples/cdk-apprunner-ecr"
+        }
+    },
+    "Resources": {
+        "MyRepository": {
+            "Type": "AWS::ECR::Repository",
+            "Properties": {
+                "RepositoryName": "apprunner-counterapp-repo",
+                "ImageScanningConfiguration": {
+                    "ScanOnPush": true
+                }
+            }
+        },
+        "VPC": {
+            "Type": "AWS::EC2::VPC",
+            "Properties": {
+                "CidrBlock": {
+                    "Ref": "Cloud9CidrBlock"
+                },
+                "EnableDnsSupport": true,
+                "EnableDnsHostnames": true,
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": {
+                            "Fn::Sub": "${AWS::StackName}-VPC"
+                        }
+                    }
+                ]
+            }
+        },
+        "InternetGateway": {
+            "Type": "AWS::EC2::InternetGateway",
+            "Properties": {
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": {
+                            "Fn::Sub": "${AWS::StackName}-InternetGateway"
+                        }
+                    }
+                ]
+            }
+        },
+        "AttachGateway": {
+            "Type": "AWS::EC2::VPCGatewayAttachment",
+            "Properties": {
+                "VpcId": {
+                    "Ref": "VPC"
+                },
+                "InternetGatewayId": {
+                    "Ref": "InternetGateway"
+                }
+            }
+        },
+        "RouteTable": {
+            "Type": "AWS::EC2::RouteTable",
+            "Properties": {
+                "VpcId": {
+                    "Ref": "VPC"
+                },
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": {
+                            "Fn::Sub": "${AWS::StackName}-RouteTable"
+                        }
+                    }
+                ]
+            }
+        },
+        "Route": {
+            "Type": "AWS::EC2::Route",
+            "DependsOn": "AttachGateway",
+            "Properties": {
+                "RouteTableId": {
+                    "Ref": "RouteTable"
+                },
+                "DestinationCidrBlock": "0.0.0.0/0",
+                "GatewayId": {
+                    "Ref": "InternetGateway"
+                }
+            }
+        },
+        "PublicSubnet1": {
+            "Type": "AWS::EC2::Subnet",
+            "Properties": {
+                "VpcId": {
+                    "Ref": "VPC"
+                },
+                "CidrBlock": {
+                    "Ref": "Cloud9CidrBlock"
+                },
+                "AvailabilityZone": {
+                    "Fn::Select": [
+                        "0",
+                        {
+                            "Fn::GetAZs": ""
+                        }
+                    ]
+                },
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": {
+                            "Fn::Sub": "${AWS::StackName}-PublicSubnet1"
+                        }
+                    }
+                ]
+            }
+        },
+        "PublicSubnet1RouteTableAssociation": {
+            "Type": "AWS::EC2::SubnetRouteTableAssociation",
+            "Properties": {
+                "SubnetId": {
+                    "Ref": "PublicSubnet1"
+                },
+                "RouteTableId": {
+                    "Ref": "RouteTable"
+                }
+            }
+        },
+        "Cloud9": {
+            "Type": "AWS::Cloud9::EnvironmentEC2",
+            "Properties": {
+                "AutomaticStopTimeMinutes": 30,
+                "Description": "CDK AppRunner Lab (Level 200)",
+                "InstanceType": "m5.large",
+                "Name": {
+                    "Fn::Sub": "AppRunnerEcr-${AWS::StackName}"
+                },
+                "Repositories": [
+                    {
+                        "PathComponent": "/cdk-apprunner-ecr",
+                        "RepositoryUrl": {
+                            "Ref": "GitRepositoryURL"
+                        }
+                    }
+                ],
+                "SubnetId": {
+                    "Ref": "PublicSubnet1"
+                },
+                "ImageId": "amazonlinux-2-x86_64"
+            }
+        },
+        "AppRunnerAdminRole": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": "ec2.amazonaws.com"
+                            },
+                            "Action": "sts:AssumeRole"
+                        }
+                    ]
+                },
+                "Description": "String",
+                "ManagedPolicyArns": [
+                    "arn:aws:iam::aws:policy/AdministratorAccess"
+                ],
+                "RoleName": "apprunnerworkshop-admin"
+            }
+        },
+        "AppRunnerInstanceProfile": {
+            "Type": "AWS::IAM::InstanceProfile",
+            "Properties": {
+                "Path": "/",
+                "Roles": [
+                    {
+                        "Ref": "AppRunnerAdminRole"
+                    }
+                ]
+            }
+        }
+    },
+    "Outputs": {
+        "Cloud9DevEnvUrl": {
+            "Description": "Cloud9 Development Environment",
+            "Value": {
+                "Fn::Sub": "https://${AWS::Region}.console.aws.amazon.com/cloud9/ide/${Cloud9}"
+            }
+        }
+    }
+}
