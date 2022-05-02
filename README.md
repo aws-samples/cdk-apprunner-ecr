@@ -8,6 +8,8 @@ As a developer, you can easily deploy your applications without the need to worr
 
 In this lab, you will learn 2 different options to deploy a containerized web application in any language (Flutter as example in this lab) with AWS App Runner. You will also learn how to provision necessary resources and permissions with Infrastructure as a Code using AWS CDK. The docker image will be stored in [Amazon Elastic Containers Registry](https://aws.amazon.com/ecr/) - a fully managed container registry offering high-performance hosting, so you can reliably deploy application images and artifacts anywhere.
 
+<img src="https://github.com/aws-samples/cdk-apprunner-ecr/blob/main/assets/architecture.jpg?raw=true"/>
+
 Sample Flutter app reference: https://docs.flutter.dev/get-started/install
 
 Estimated time: 15 minutes
