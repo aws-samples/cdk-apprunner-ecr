@@ -1,6 +1,12 @@
 ## Build, Run and Deploy your containerized Web Application using Docker, AWS App Runner and Elastic Container Registry
 
-In this lab, you will learn 2 different options to deploy a containerized web application in any language (Flutter as example in this lab) with AWS App Runner. You will also learn how to provision necessary resources and permissions with Infrastructure as a Code using AWS CDK. The docker image will be stored in AWS Elastic Containers Registry.
+[AWS App Runner](https://aws.amazon.com/apprunner/) is an AWS service that provides a fast, simple, and cost-effective way to deploy from source code or a container image directly to a scalable and secure web application in the AWS Cloud. There are no orchestrators to configure, build pipelines to set up, load balancers to optimize, or TLS certificates to rotate. And of course, there are no servers to manage. App Runner benefits developers and teams who do not have any container expertise to run their web applications and services. 
+
+The AWS Cloud Development Kit [AWS CDK](https://aws.amazon.com/cdk/) is an open-source software development framework to define your cloud application resources using familiar programming languages. One of the benefits of the AWS CDK is that you can leverage your favorite development environments and have a rich experience when exploring the hundreds of different services and features of AWS. 
+
+As a developer, you can easily deploy your applications without the need to worry about infrastructure with these two. As of this writing, App Runner supports Python, Node.js and Java. In this lab, this lab will show you how you can utilize the services to deploy applications written in other languages potentially.
+
+In this lab, you will learn 2 different options to deploy a containerized web application in any language (Flutter as example in this lab) with AWS App Runner. You will also learn how to provision necessary resources and permissions with Infrastructure as a Code using AWS CDK. The docker image will be stored in [Amazon Elastic Containers Registry](https://aws.amazon.com/ecr/) - a fully managed container registry offering high-performance hosting, so you can reliably deploy application images and artifacts anywhere.
 
 Sample Flutter app reference: https://docs.flutter.dev/get-started/install
 
@@ -10,6 +16,8 @@ Estimated time: 15 minutes
 
 Lab level: 200
 
+[Feedback link](https://eventbox.dev/survey/GTQO106)
+
 ## Learning Outcomes:
 * Learn how App Runner can help developers to deploy applications easily hosted on cloud.
 * Learn how App Runner can automatically trigger deployment for new update pushed to their application code.
@@ -17,6 +25,10 @@ Lab level: 200
 * Learn about infrastructure as a code with AWS CDK
 
 ## Before we start, prerequisites
+***NOTE: If you are at an AWS event, there might be some initial resources already provisioned for you. Otherwise, use the CloudFormation template in this repository (`apprunnercfn.json`) and create the required resources in `us-west-2` before you start.***
+
+There should be a Cloud9 Instance provisioned for you in the account for this lab. Follow this [link](https://us-west-2.console.aws.amazon.com/cloud9/home?region=us-west-2#) to go to your Cloud9 instance. Click the ‘IDE’ button to launch your Cloud9 instance.
+
 1. Clean up any residual activities to return to a clean state.
 ```
 cd ~/environment/cdk-apprunner-ecr/cdk-apprunner-existing-repo
@@ -24,7 +36,6 @@ cdk destroy -f
 cd ~/environment/cdk-apprunner-ecr/cdk-apprunner-asset
 cdk destroy -f
 ```
-* There should be a Cloud9 Instance provisioned for you in the account for this lab. Follow this [link](https://us-west-2.console.aws.amazon.com/cloud9/home?region=us-west-2#) to go to your Cloud9 instance. Click the ‘IDE’ button to launch your Cloud9 instance.
 
 2. Check if the correct IAM role has been attached to your Cloud9 instance
 
@@ -338,11 +349,12 @@ Alternatively you can stay with manual deployment and trigger it whenever you ma
 
 See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
 
-## Feedback
-*Feedback link*
+## Please help us improve by providing your feedback
+[Feedback link](https://eventbox.dev/survey/GTQO106)
+
 Thanks for completing a lab, hope you had fun!
 We really appreciate your feedback and would love to hear about what you loved and what we can improve.
-Please give us feedback so we can improve these labs.
+Please take a few seconds to give us [feedback](https://eventbox.dev/survey/GTQO106) so we can improve these labs.
 
 ## License
 
