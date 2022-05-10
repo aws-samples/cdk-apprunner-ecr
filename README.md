@@ -45,7 +45,7 @@ cdk destroy -f
 
 <img src="https://github.com/aws-samples/cdk-apprunner-ecr/blob/main/assets/ec2-iam-1.png?raw=true"/>
 
-Click on the instance, check under ‘IAM Role’ to make sure the role shows as `apprunnerworkshop-admin`
+Click on the instance, check under ‘IAM Role’ to make sure the role shows as `apprunnerworkshop-admin` or `{yourStackName}-AppRunnerInstanceProfile-{randomstrings}`.
 
 <img src="https://github.com/aws-samples/cdk-apprunner-ecr/blob/main/assets/ec2-iam-2.png?raw=true"/>
 
@@ -53,7 +53,7 @@ Click on the instance, check under ‘IAM Role’ to make sure the role shows as
 
 <img src="https://github.com/aws-samples/cdk-apprunner-ecr/blob/main/assets/ec2-iam-3.png?raw=true"/>
 
-* Choose apprunnerworkshop-admin from the *IAM Role* drop down, and select *Save*
+* Choose `{yourStackName}-AppRunnerInstanceProfile-{randomstrings}` from the *IAM Role* drop down, and select *Save*. We are using the instance profile to pass the `apprunnerworkshop-admin` IAM role to an EC2 instance.
 
 <img src="https://github.com/aws-samples/cdk-apprunner-ecr/blob/main/assets/ec2-iam-4.png?raw=true"/>
 
