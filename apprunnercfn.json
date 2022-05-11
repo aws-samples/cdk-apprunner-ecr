@@ -139,7 +139,7 @@
                 "Description": "CDK AppRunner Lab (Level 200)",
                 "InstanceType": "m5.large",
                 "Name": {
-                    "Fn::Sub": "AppRunnerEcr-${AWS::StackName}"
+                    "Fn::Sub": "CDK AppRunner Lab (Level 200)"
                 },
                 "Repositories": [
                     {
