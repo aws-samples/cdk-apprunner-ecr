@@ -29,7 +29,15 @@ Lab level: 200
 ## Before we start, prerequisites
 ***NOTE: If you are at an AWS event, there might be some initial resources already provisioned for you. Otherwise, use the CloudFormation template in this repository (`apprunnercfn.json`) and create the required resources in `us-west-2` before you start.***
 
-There should be a Cloud9 Instance provisioned for you in the account for this lab. Follow this [link](https://us-west-2.console.aws.amazon.com/cloud9/home?region=us-west-2#) to go to your Cloud9 instance. Click the ‘IDE’ button to launch your Cloud9 instance.
+Before we begin, we will need to login into AWS Cloud9. Cloud9 is a cloud-based integrated development environment (IDE) that lets you write and run code with just a browser. All code required to setup the lab is prepared, participants are only required to run the scripts in Cloud9.
+
+To access Cloud9 search for `Cloud9` in the AWS Console and click on Cloud9.
+
+<img src="https://github.com/aws-samples/cdk-apprunner-ecr/blob/main/assets/cloud9_search.png?raw=true"/>
+
+Under `Your environments`, open the `CDK AppRunner Lab (Level 200)` Cloud9 instance by clicking on Open IDE
+
+<img src="https://github.com/aws-samples/cdk-apprunner-ecr/blob/main/assets/cdk_apprunner_cloud9.png?raw=true"/>
 
 1. Clean up any residual activities to return to a clean state.
 ```
