@@ -37,7 +37,7 @@ To access Cloud9 search for `Cloud9` in the AWS Console and click on Cloud9.
 
 Under `Your environments`, open the `CDK AppRunner Lab (Level 200)` Cloud9 instance by clicking on Open IDE
 
-<img src="https://github.com/aws-samples/cdk-apprunner-ecr/blob/main/assets/cdk_apprunner_cloud9.png?raw=true"/>
+<img src="https://github.com/aws-samples/cdk-apprunner-ecr/blob/main/assets/cdk_apprunner_cloud9.png?raw=true" width="50%"/>
 
 1. Clean up any residual activities to return to a clean state.
 ```
