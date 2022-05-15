@@ -366,7 +366,9 @@ See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more inform
 
 Thanks for completing a lab, hope you had fun!
 We really appreciate your feedback and would love to hear about what you loved and what we can improve.
-Please take a few seconds to give us [feedback](https://eventbox.dev/survey/GTQO106) so we can improve these labs.
+Please take a few seconds to give us [feedback](https://eventbox.dev/survey/GTQO106) so we can improve these labs. Alternatively, you can scan the QR code below:
+
+<img src="https://github.com/aws-samples/cdk-apprunner-ecr/blob/main/assets/feedback-qr-code.png?raw=true"/>
 
 ## License
 
