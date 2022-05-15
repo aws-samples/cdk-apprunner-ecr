@@ -42,8 +42,10 @@ Under `Your environments`, open the `CDK AppRunner Lab (Level 200)` Cloud9 insta
 1. Clean up any residual activities to return to a clean state.
 ```
 cd ~/environment/cdk-apprunner-ecr/cdk-apprunner-existing-repo
+npm install
 cdk destroy -f
 cd ~/environment/cdk-apprunner-ecr/cdk-apprunner-asset
+npm install
 cdk destroy -f
 ```
 
