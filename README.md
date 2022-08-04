@@ -18,7 +18,7 @@ Estimated time: 15 minutes
 
 Lab level: 200
 
-[Feedback link](https://eventbox.dev/survey/GTQO106)
+[Feedback link](https://eventbox.dev/survey/HE7G1FV)
 
 ## Learning Outcomes:
 * Learn how App Runner can help developers to deploy applications easily hosted on cloud.
@@ -362,11 +362,11 @@ Alternatively you can stay with manual deployment and trigger it whenever you ma
 See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
 
 ## Please help us improve by providing your feedback
-[Feedback link](https://eventbox.dev/survey/GTQO106)
+[Feedback link](https://eventbox.dev/survey/HE7G1FV)
 
 Thanks for completing a lab, hope you had fun!
 We really appreciate your feedback and would love to hear about what you loved and what we can improve.
-Please take a few seconds to give us [feedback](https://eventbox.dev/survey/GTQO106) so we can improve these labs. Alternatively, you can scan the QR code below:
+Please take a few seconds to give us [feedback](https://eventbox.dev/survey/HE7G1FV) so we can improve these labs. Alternatively, you can scan the QR code below:
 
 <img src="https://github.com/aws-samples/cdk-apprunner-ecr/blob/main/assets/feedback-qr-code.png?raw=true" width="40%"/>
 
